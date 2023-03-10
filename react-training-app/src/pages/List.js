@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import RestoForm from '../components/RestoForm';
 
 const List = () => {
 // State
@@ -22,8 +23,18 @@ const List = () => {
 
         // Etape 3 : Mise à jour du state
         setFastfood(fastfoodUpdate);
+    }
 
-        alert('Fastfood supprimé')
+    const addItem = (restoAjout) => {
+        // Etape 1 : Copie
+        const copieFastfood = fastfood.slice();
+        // ou const copieFastfood = [...fastfood];
+
+        // Etape 2 : Manipulation
+        copieFastfood.push(restoAjout);
+
+        // Etape 3 : Mise à jour du state
+        setFastfood(copieFastfood);
     }
 
 // Affichage
@@ -38,6 +49,8 @@ const List = () => {
                     </li>
                 ))}
             </ul>
+
+            <RestoForm add={addItem} />
         </div>
     );
 };
